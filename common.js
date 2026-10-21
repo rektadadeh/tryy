@@ -93,8 +93,8 @@ const PRODUCTS = [
     type: "jual",
     name: "Akun Free Fire #4",
     category: "Game",
-    price: ,
-    rating: ,
+    price: 0,
+    rating: 0,
     soldOut: true,
     badge: "Segera Hadir",
     specs: [

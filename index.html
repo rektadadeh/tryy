@@ -1,0 +1,74 @@
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>ZAREXX STORE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<div id="site-header"></div>
+
+<main class="wrap">
+
+  <section class="hero-banner">
+    <img src="banner.jpg" alt="ZAREXX STORE" />
+  </section>
+
+  <section class="hero">
+    <span class="eyebrow">Jual dan Rental Termurah</span>
+    <h1>Akun Game dan Rental Akun <span>Murah, Aman dan Cepat.</span></h1>
+    <p class="hero-sub">ZAREXX STORE menyediakan akun game Free Fire yang aman dan rental Free Fire murah. Order gampang, langsung chat via WhatsApp — kontak admin ramah, jadi save juga nomor admin ya!</p>
+    <div class="hero-actions">
+      <a href="jual.html" class="btn btn-accent btn-lg" style="width:auto;">Beli Akun</a>
+      <a href="rental.html" class="btn btn-outline btn-lg" style="width:auto;">Rental Akun</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><b>1.200+</b><span>Transaksi Sukses</span></div>
+      <div class="hero-stat"><b>4.8/5</b><span>Rating Pembeli</span></div>
+      <div class="hero-stat"><b>24 Jam</b><span>Respon Admin</span></div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="trust">
+      <div class="trust-item"><div class="trust-icon">✓</div><div><b>100% Aman</b><span>Akun aman &amp; bergaransi</span></div></div>
+      <div class="trust-item"><div class="trust-icon">⚡</div><div><b>Proses Cepat</b><span>Diproses setelah konfirmasi</span></div></div>
+      <div class="trust-item"><div class="trust-icon">💬</div><div><b>Support Ramah</b><span>Fast response via WhatsApp</span></div></div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:10px;">
+    <div class="section-head">
+      <h2>Pilih Kebutuhanmu</h2>
+    </div>
+    <div class="split">
+      <div class="split-card">
+        <h3>Jual Akun</h3>
+        <p>Akun game 100% aman dan bergaransi, sampai email bisa di-bind ke punyamu sendiri.</p>
+        <a href="jual.html" class="btn btn-accent">Lihat Akun Dijual →</a>
+      </div>
+      <div class="split-card">
+        <h3>Rental Akun</h3>
+        <p>Akun murah dengan skin SG dan Evo Gun Max, harga dana pelajar.</p>
+        <a href="rental.html" class="btn btn-accent">Lihat Akun Rental →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:10px;">
+    <div class="section-head">
+      <h2>Produk Kami</h2>
+    </div>
+    <div class="grid" id="allFeatured"></div>
+  </section>
+
+</main>
+
+<div id="site-footer"></div>
+<div id="detail-modal"></div>
+
+<script src="common.js"></script>
+<script>
+  mountChrome("index.html");
+  mountDetailModal();
+  renderGrid("allFeatured", PRODUCTS);
+</script>

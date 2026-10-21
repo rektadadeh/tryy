@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>FAQ &amp; Cara Order — ZAREXX STORE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  :root { color-scheme: dark; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+  body { margin: 0; font: 14px/1.4 -apple-system, sans-serif; }
+  img { max-width: 100%; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<main class="wrap">
+  <div class="page-head">
+    <div class="breadcrumb"><a href="index.html">Beranda</a> / FAQ &amp; Cara Order</div>
+    <h1>Pusat Bantuan</h1>
+    <p>Semua yang perlu kamu tahu sebelum order akun di ZAREXX STORE.</p>
+  </div>
+
+  <section class="section" style="padding-top:18px;">
+    <div class="section-head"><h2>Cara Order</h2></div>
+    <div class="steps">
+      <div class="step"><b class="num">1</b><h4>Pilih Akun</h4><p>Cari akun di halaman Jual Akun atau Rental Akun, lalu klik untuk lihat detail.</p></div>
+      <div class="step"><b class="num">2</b><h4>Klik Order</h4><p>Tekan tombol "Order via WhatsApp" pada akun yang kamu mau.</p></div>
+      <div class="step"><b class="num">3</b><h4>Konfirmasi Admin</h4><p>Chat otomatis terisi detail pesanan. Admin akan konfirmasi stok &amp; total bayar.</p></div>
+      <div class="step"><b class="num">4</b><h4>Bayar &amp; Terima</h4><p>Setelah pembayaran dikonfirmasi, akun dikirim langsung via WhatsApp.</p></div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:10px;">
+    <div class="section-head"><h2>Pertanyaan Umum</h2></div>
+    <div id="faqList"></div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="cta-support">
+      <div>
+        <h3>Masih ada pertanyaan?</h3>
+        <p>Tim kami siap bantu 24 jam lewat WhatsApp.</p>
+      </div>
+      <a class="btn btn-accent" href="https://wa.me/6285877101381" target="_blank" rel="noopener">Chat Sekarang</a>
+    </div>
+
+    <div class="section-head" style="margin-top:34px;"><h2>Ikuti Kami</h2></div>
+    <div class="social-row" id="socialRow"></div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="common.js"></script>
+<script>
+  mountChrome("faq.html");
+
+  const FAQS = [
+    ["Apakah akun yang dijual original?", "Ya, semua akun 100% original dan diverifikasi sebelum dijual. Kami tidak menjual akun hasil ilegal."],
+    ["Bagaimana cara melakukan pemesanan?", "Pilih akun di halaman Jual Akun atau Rental Akun, klik Detail, lalu tekan tombol Order via WhatsApp untuk lanjut ke admin."],
+    ["Berapa lama proses pengiriman akun?", "Setelah pembayaran dikonfirmasi admin, akun biasanya dikirim dalam 5–30 menit pada jam operasional."],
+    ["Apakah ada garansi?", "Akun jual putus bergaransi penggantian jika ada kendala di awal transaksi. Akun rental bergaransi aktif selama masa sewa."],
+    ["Bagaimana jika akun tidak bisa digunakan?", "Langsung hubungi admin via WhatsApp dengan nomor order kamu, akan dibantu proses penggantian sesuai ketentuan."],
+    ["Metode pembayaran apa saja yang tersedia?", "Saat ini pembayaran diproses manual melalui konfirmasi admin di WhatsApp (transfer bank, e-wallet, atau QRIS sesuai kesepakatan)."],
+  ];
+
+  document.getElementById("faqList").innerHTML = FAQS.map((f, i) => `
+    <div class="faq-item">
+      <div class="faq-q" data-i="${i}">${f[0]} <span class="icon">+</span></div>
+      <div class="faq-a"><p>${f[1]}</p></div>
+    </div>
+  `).join("");
+
+  document.querySelectorAll(".faq-q").forEach(q => {
+    q.addEventListener("click", () => q.closest(".faq-item").classList.toggle("open"));
+  });
+
+  document.getElementById("socialRow").innerHTML = `
+    <a class="social-pill" href="${SOCIALS.yt}" target="_blank" rel="noopener">▶ YouTube</a>
+    <a class="social-pill" href="${SOCIALS.ig}" target="_blank" rel="noopener">◎ Instagram</a>
+    <a class="social-pill" href="${SOCIALS.tiktok}" target="_blank" rel="noopener">♪ TikTok</a>
+  `;
+</script>
+</body>
+</html>

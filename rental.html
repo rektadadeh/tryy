@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Rental Akun — ZAREXX STORE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  :root { color-scheme: dark; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+  body { margin: 0; font: 14px/1.4 -apple-system, sans-serif; }
+  img { max-width: 100%; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<main class="wrap">
+  <div class="page-head">
+    <div class="breadcrumb"><a href="index.html">Beranda</a> / Rental Akun</div>
+    <h1>Rental Akun Free Fire</h1>
+    <p>Sewa akun Free Fire dengan skin SG &amp; Evo Gun Max, harga dana pelajar. Pilih durasi sesuai kebutuhan.</p>
+  </div>
+
+  <section class="section" style="padding-top:18px;">
+    <div class="grid" id="rentalGrid"></div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+<div id="detail-modal"></div>
+
+<script src="common.js"></script>
+<script>
+  mountChrome("rental.html");
+  mountDetailModal();
+  renderGrid("rentalGrid", PRODUCTS.filter(p => p.type === "rental"));
+</script>
+</body>
+</html>

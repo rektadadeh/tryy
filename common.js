@@ -98,8 +98,8 @@ const PRODUCTS = [
     soldOut: true,
     badge: "Segera Hadir",
     specs: [
-      ["Bundle", ""],
-      ["Skin Senjata", ""],
+      ["Bundle", "20+ bundle langka"],
+      ["Skin Senjata", "15+"],
       GARANSI_SPEC,
     ],
   },
@@ -253,6 +253,12 @@ function mountChrome(active) {
 
 function productCard(p) {
   const priceSuffix = p.type === "rental" && !p.durations ? "<small>/bulan</small>" : "";
+  const ratingBlock = p.soldOut
+    ? `<div class="card-rating"><span>${statusText(p)}</span></div>`
+    : `<div class="card-rating">★ ${Number(p.rating || 0).toFixed(1)} <span>· ${statusText(p)}</span></div>`;
+  const priceBlock = p.soldOut
+    ? `<span class="card-price">Segera Hadir</span>`
+    : `<span class="card-price">${rupiah(p.price)}${priceSuffix}</span>`;
   return `
   <article class="card" data-id="${p.id}">
     <div class="card-media">
@@ -263,9 +269,9 @@ function productCard(p) {
     <div class="card-body">
       <span class="card-cat">${p.category}</span>
       <h3 class="card-title">${p.name}</h3>
-      <div class="card-rating">★ ${p.rating.toFixed(1)} <span>· ${statusText(p)}</span></div>
+      ${ratingBlock}
       <div class="card-price-row">
-        <span class="card-price">${rupiah(p.price)}${priceSuffix}</span>
+        ${priceBlock}
         <button class="btn btn-ghost btn-sm card-detail-btn" data-id="${p.id}">Detail</button>
       </div>
     </div>
@@ -341,6 +347,13 @@ function openDetail(id) {
     ? `<div class="btn btn-ghost btn-lg modal-order-btn" style="opacity:.6; cursor:not-allowed;">Stok Habis — Segera Hadir</div>`
     : `<a class="btn btn-accent btn-lg modal-order-btn" id="orderBtn" href="${waLink(p)}" target="_blank" rel="noopener">Order via WhatsApp</a>`;
 
+  const ratingBlockModal = p.soldOut
+    ? `<div class="card-rating"><span>${statusText(p)}</span></div>`
+    : `<div class="card-rating">★ ${Number(p.rating || 0).toFixed(1)} <span>· ${statusText(p)}</span></div>`;
+  const priceBlockModal = p.soldOut
+    ? `<div class="modal-price" id="modalPrice">Segera Hadir</div>`
+    : `<div class="modal-price" id="modalPrice">${rupiah(p.price)}${priceSuffix}</div>`;
+
   content.innerHTML = `
     <div class="modal-media">${p.image ? `<img src="${p.image}" alt="${p.name}" />` : p.category}
       ${p.badge ? `<span class="card-badge">${p.badge}</span>` : ""}
@@ -348,11 +361,11 @@ function openDetail(id) {
     <div class="modal-body">
       <span class="card-type card-type-${p.type}">${p.type === "rental" ? "Rental" : "Jual Akun"}</span>
       <h2>${p.name}</h2>
-      <div class="card-rating">★ ${p.rating.toFixed(1)} <span>· ${statusText(p)}</span></div>
-      <div class="modal-price" id="modalPrice">${rupiah(p.price)}${priceSuffix}</div>
+      ${ratingBlockModal}
+      ${priceBlockModal}
       ${durationBlock}
       <table class="spec-table">
-        ${p.specs.map((s) => `<tr><th>${s[0]}</th><td>${s[1]}</td></tr>`).join("")}
+        ${p.specs.filter((s) => s[1] !== "" && s[1] != null).map((s) => `<tr><th>${s[0]}</th><td>${s[1]}</td></tr>`).join("")}
       </table>
       <p class="modal-desc">Spek lengkap akun cek saluran WhatsApp kami: <a href="${WA_CHANNEL}" target="_blank" rel="noopener" class="modal-desc-link">Saluran WhatsApp ZAREXX STORE</a></p>
       ${orderBlock}
